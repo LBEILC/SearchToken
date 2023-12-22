@@ -23,26 +23,16 @@ export default function SearchKey() {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch('https://api.v3.cm/api/token/?p=0', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'Cookie': 'Hm_lvt_3fab922b8863ef4637306477eef76397=1700490958,1700798757; session=MTcwMjAyMjU1MHxEWDhFQVFMX2dBQUJFQUVRQUFCd180QUFCQVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpBMmx1ZEFRQ0FBSUdjM1J5YVc1bkRBUUFBbWxrQTJsdWRBUUVBUDREMEFaemRISnBibWNNQ2dBSWRYTmxjbTVoYldVR2MzUnlhVzVuREFrQUIxVnlZVzVwZFcwR2MzUnlhVzVuREFZQUJISnZiR1VEYVc1MEJBSUFBZz09fGWIgSKcCTGSFMQ8h5neaBb1XWjdTgD5HmPbRqrsvD3p'
-        },
-      });
-      const json = await response.json();
-      if (json.success && json.data) {
-        const userKeyData = json.data.find((item: UserData) => item.key === key);
-        if (userKeyData) {
-          setUserData(userKeyData);
-        } else {
-          setError('No data found for this key.');
-          setUserData(null);
-        }
-      } else {
-        setError('Failed to fetch data.');
-        setUserData(null);
+      // 发送请求到你的 Next.js API 路由
+      const response = await fetch(`/api/fetch-data?key=${encodeURIComponent(key)}`);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to fetch data');
       }
+
+      setUserData(data);
+      setError('');
     } catch (err: any) {
       setError(err.message);
       setUserData(null);
