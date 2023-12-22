@@ -52,7 +52,7 @@ export default function SearchKey() {
 
   // 格式化额度为货币字符串
   const formatQuota = (quota: number): string =>
-    `$${(quota / 500000).toFixed(2)}`;
+    `$${(quota / 250000).toFixed(2)}`;
 
   return (
     <div className="container mx-auto px-4 py-6 dark:bg-gray-800">
@@ -61,13 +61,13 @@ export default function SearchKey() {
         type="text"
         value={inputKey}
         onChange={handleChange}
-        placeholder="Enter your key with 'sk-' prefix"
+        placeholder="输入你的Key 以 'sk-' 开头"
       />
       <button
         className="search-button bg-blue-500 dark:bg-blue-700 btn bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         onClick={handleSearch}
       >
-        Search
+        查询
       </button>
       {error && <p className="text-red-500 text-xs italic mt-2">{error}</p>}
       {userData && (
