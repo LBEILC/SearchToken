@@ -5,6 +5,10 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 
 axios.defaults.headers.common['Cookie'] = 'Hm_lvt_3fab922b8863ef4637306477eef76397=1700490958,1700798757; session=MTcwMjAyMjU1MHxEWDhFQVFMX2dBQUJFQUVRQUFCd180QUFCQVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpBMmx1ZEFRQ0FBSUdjM1J5YVc1bkRBUUFBbWxrQTJsdWRBUUVBUDREMEFaemRISnBibWNNQ2dBSWRYTmxjbTVoYldVR2MzUnlhVzVuREFrQUIxVnlZVzVwZFcwR2MzUnlhVzVuREFZQUJISnZiR1VEYVc1MEJBSUFBZz09fGWIgSKcCTGSFMQ8h5neaBb1XWjdTgD5HmPbRqrsvD3p';
+
+document.cookie = 'Hm_lvt_3fab922b8863ef4637306477eef76397=1700490958,1700798757; session=MTcwMjAyMjU1MHxEWDhFQVFMX2dBQUJFQUVRQUFCd180QUFCQVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpBMmx1ZEFRQ0FBSUdjM1J5YVc1bkRBUUFBbWxrQTJsdWRBUUVBUDREMEFaemRISnBibWNNQ2dBSWRYTmxjbTVoYldVR2MzUnlhVzVuREFrQUIxVnlZVzVwZFcwR2MzUnlhVzVuREFZQUJISnZiR1VEYVc1MEJBSUFBZz09fGWIgSKcCTGSFMQ8h5neaBb1XWjdTgD5HmPbRqrsvD3p';
+
+document.cookie = 'session=MTcwMjAyMjU1MHxEWDhFQVFMX2dBQUJFQUVRQUFCd180QUFCQVp6ZEhKcGJtY01DQUFHYzNSaGRIVnpBMmx1ZEFRQ0FBSUdjM1J5YVc1bkRBUUFBbWxrQTJsdWRBUUVBUDREMEFaemRISnBibWNNQ2dBSWRYTmxjbTVoYldVR2MzUnlhVzVuREFrQUIxVnlZVzVwZFcwR2MzUnlhVzVuREFZQUJISnZiR1VEYVc1MEJBSUFBZz09fGWIgSKcCTGSFMQ8h5neaBb1XWjdTgD5HmPbRqrsvD3p';
 interface UserData {
   id: number;
   user_id: number;
@@ -28,10 +32,6 @@ export default function SearchKey() {
     try {
       const response = await axios.get('https://api.v3.cm/api/token/?p=0', {
         withCredentials: true, // 确保跨域请求时发送 Cookie
-        headers: {
-
-          // Axios 不允许在浏览器端设置 Cookie 头部，这里的设置可能会被忽略
-        },
       });
       const json = response.data;
       if (json.success && json.data) {
